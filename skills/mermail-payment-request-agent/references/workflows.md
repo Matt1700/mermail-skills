@@ -1,5 +1,7 @@
 # Payment request agent workflows
 
+For a human-only/read-only claim digest, use [human-only-claims.md](human-only-claims.md) instead of the independent PayBox section. The user-selected mode takes precedence: do not probe a wallet merely to review claims or draft an acknowledgement.
+
 ## Bounded invoice intake
 
 1. Call `list_mailboxes`. Prefer one ready receiving inbox. Reject disabled or ambiguous mailboxes.

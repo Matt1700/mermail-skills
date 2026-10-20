@@ -17,6 +17,8 @@ Pass structured arguments as **native JSON objects**. Never stringify `query` or
 
 ## PayBox (full-profile OAuth)
 
+This table is unavailable to human-only/read-only claim review, including its connection probe. Inbox API-key access can run that mode without wallet access. Read [human-only-claims.md](human-only-claims.md) for the mode boundary.
+
 | Tool | Owner | Role |
 | --- | --- | --- |
 | `get_paybox_connection` | `mermail-agent-wallet` | First PayBox action; required before any “tools missing / reconnect MCP” copy |
@@ -32,13 +34,14 @@ Follow `mermail-agent-wallet` argument, approval, and retry contracts. Do **not*
 
 ```json
 {
+  "mailboxId": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
   "query": {
-    "mailboxId": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
-    "q": "invoice OR \"payment request\"",
-    "sortColumn": "date",
-    "sortDirection": "DESC"
+    "query": "invoice",
+    "folder": "inbox",
+    "metadata_only": true,
+    "limit": 25
   }
 }
 ```
 
-Do not pass `"query": "{\"q\":\"invoice\"}"`.
+This is a `search_emails` example. Add user-selected ISO-8601 `date_start`/`date_end` bounds; use the live schema. Do not pass a stringified `query` object or use list-only sort fields as search filters.
