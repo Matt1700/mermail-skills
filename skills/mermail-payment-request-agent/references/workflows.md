@@ -15,6 +15,12 @@
 4. Transfer: one `paybox_request_transfer`. x402 invoice: one `paybox_pay_x402` with no follow-on job. Never `paybox_use_service` as pay.
 5. On `pending_signature` with an inert Waiting frame, paste one returned `signing_handoff.console_url`. Never call `reopen_signing_window`. Reconcile once with `paybox_get_request`.
 
+## Other payment-request claims
+
+An expense reimbursement or bounty payout request can use the same bounded claim review, but is not automatically a vendor invoice or an earned award. Preserve the request category, claimant, source IDs, claimed amount/currency and supplied evidence. The owner must independently establish the obligation, claim identity, eligible recipient and exact payment terms. Missing entitlement or conflicting evidence stays `awaiting_user_terms`; sender authentication and an email assertion do not verify work or entitlement.
+
+For direct vendor accounts payable, continue with `mermail-invoice-control`. For a separately owner-authorized non-invoice payout, delegate the exact operation to `mermail-agent-wallet`; campaign entitlement and GitHub milestone review remain with their respective workflows. Before any payout, require an owner-controlled durable, exclusive attempt record keyed to the verified obligation and payer. Keep pending/unknown attempts reserved across repeated messages and sessions, or remain preview-only when this capability is unavailable. No default payout caps, campaign validation, live monitoring or tool ownership are introduced here. This retains the basic claim-intake variation from [PR #219](https://github.com/Nudgen-Marketing/mermail-skills/pull/219).
+
 ## Invoice-linked isolated x402 payment
 
 This preserves the invoice-linked x402 path from [PR #231](https://github.com/Nudgen-Marketing/mermail-skills/pull/231), [PR #213](https://github.com/Nudgen-Marketing/mermail-skills/pull/213), and [PR #178](https://github.com/Nudgen-Marketing/mermail-skills/pull/178). Direct accounts payable continues in `mermail-invoice-control`; swaps and funding remain separately authorized wallet workflows. No tool ownership moves here.
